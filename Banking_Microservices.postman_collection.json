@@ -1,0 +1,373 @@
+{
+  "info": {
+    "name": "Banking Microservices",
+    "description": "Collection for testing Customer Service, Transaction Service, and Eureka in the Banking Microservices project.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Customer Service",
+      "item": [
+        {
+          "name": "Create Account - Kumar",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"accountNumber\": 1001,\n    \"customerName\": \"Kumar\",\n    \"balance\": 10000\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8086/account/create",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8086",
+              "path": ["account", "create"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Account - Ravi",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"accountNumber\": 1002,\n    \"customerName\": \"Ravi\",\n    \"balance\": 5000\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8086/account/create",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8086",
+              "path": ["account", "create"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Deposit",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"accountNumber\":1001,\n    \"amount\":2000\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8086/account/deposit",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8086",
+              "path": ["account", "deposit"]
+            }
+          },
+          "response": [
+            {
+              "name": "Expected Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [{ "key": "Content-Type", "value": "application/json" }],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"accountNumber\":1001,\n    \"amount\":2000\n}"
+                },
+                "url": {
+                  "raw": "http://localhost:8086/account/deposit",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "8086",
+                  "path": ["account", "deposit"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n    \"message\":\"Amount Deposited Successfully\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Withdraw",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"accountNumber\":1001,\n    \"amount\":1000\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8086/account/withdraw",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8086",
+              "path": ["account", "withdraw"]
+            }
+          },
+          "response": [
+            {
+              "name": "Expected Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [{ "key": "Content-Type", "value": "application/json" }],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"accountNumber\":1001,\n    \"amount\":1000\n}"
+                },
+                "url": {
+                  "raw": "http://localhost:8086/account/withdraw",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "8086",
+                  "path": ["account", "withdraw"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n    \"message\":\"Amount Withdraw Successfully\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Balance Inquiry - 1001",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8086/account/balance/1001",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8086",
+              "path": ["account", "balance", "1001"]
+            }
+          },
+          "response": [
+            {
+              "name": "Expected Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8086/account/balance/1001",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "8086",
+                  "path": ["account", "balance", "1001"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n    \"message\":\"Current Balance : 11000.0\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Fund Transfer",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"fromAccountNumber\":1001,\n    \"toAccountNumber\":1002,\n    \"amount\":1000\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8086/account/transfer",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8086",
+              "path": ["account", "transfer"]
+            }
+          },
+          "response": [
+            {
+              "name": "Expected Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [{ "key": "Content-Type", "value": "application/json" }],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"fromAccountNumber\":1001,\n    \"toAccountNumber\":1002,\n    \"amount\":1000\n}"
+                },
+                "url": {
+                  "raw": "http://localhost:8086/account/transfer",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "8086",
+                  "path": ["account", "transfer"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n    \"message\":\"Fund Transfer Successful\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Check Sender Balance - 1001",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8086/account/balance/1001",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8086",
+              "path": ["account", "balance", "1001"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Check Receiver Balance - 1002",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8086/account/balance/1002",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8086",
+              "path": ["account", "balance", "1002"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Test API",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8086/account/test",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8086",
+              "path": ["account", "test"]
+            }
+          },
+          "response": [
+            {
+              "name": "Expected Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8086/account/test",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "8086",
+                  "path": ["account", "test"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [{ "key": "Content-Type", "value": "text/plain" }],
+              "body": "Account Service Working"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Transaction Service",
+      "item": [
+        {
+          "name": "Deposit",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"accountNumber\":1001,\n    \"amount\":500\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8084/transaction/deposit",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8084",
+              "path": ["transaction", "deposit"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Withdraw",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"accountNumber\":1001,\n    \"amount\":200\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8084/transaction/withdraw",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8084",
+              "path": ["transaction", "withdraw"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Test API",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8084/transaction/test",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8084",
+              "path": ["transaction", "test"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Eureka",
+      "item": [
+        {
+          "name": "Eureka Dashboard",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8761",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8761",
+              "path": []
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
